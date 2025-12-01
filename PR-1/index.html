@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EventEase | Online Event Management System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+
+        .navbar {
+            width: 100%;
+            height: 70px;
+            background: linear-gradient(90deg, #004aad, #0078ff);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+
+        .logo h2 {
+            font-size: 22px;
+            letter-spacing: 1px;
+        }
+
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffcc00;
+            text-decoration: underline;
+        }
+
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .search-box {
+            padding: 6px 10px;
+            border-radius: 4px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            width: 160px;
+        }
+
+        .btn {
+            border: none;
+            padding: 8px 14px;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn.login {
+            background-color: white;
+            color: #004aad;
+        }
+
+        .btn.signup {
+            background-color: #ffcc00;
+            color: #003366;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* ===== Banner Section ===== */
+        .banner {
+            width: 100%;
+            height: 90vh;
+            background: linear-gradient(90deg, #a4a6a8, #2788f7),
+                url('banner.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .banner-content {
+            max-width: 700px;
+            padding: 20px;
+        }
+
+        .banner h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .banner p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            color: #f0f0f0;
+        }
+
+        .banner p span {
+            color: #ffcc00;
+            font-weight: 600;
+        }
+
+        .banner-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .banner .btn {
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            border: none;
+            transition: 0.3s;
+        }
+
+        .btn.explore {
+            background: #ffcc00;
+            color: #003366;
+            border: 2px solid #9a9a9a;
+
+        }
+
+        .btn.explore:hover {
+            background: #ffc107;
+            transform: scale(1.05);
+        }
+
+        .btn.contact {
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+        }
+
+        .btn.contact:hover {
+            background: white;
+            color: #004aad;
+            transform: scale(1.05);
+        }
+
+        /* ===== Services Section ===== */
+        .services {
+            width: 100%;
+            padding: 80px 40px;
+            text-align: center;
+            background-color: #f8f9ff;
+        }
+
+        .section-title {
+            font-size: 32px;
+            color: #003366;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+        .service-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .service-box {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px 20px;
+            width: 300px;
+            transition: all 0.3s ease;
+        }
+
+        .service-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-box img {
+            width: 90px;
+            height: 90px;
+            margin-bottom: 20px;
+        }
+
+        .service-box h3 {
+            font-size: 20px;
+            color: #004aad;
+            margin-bottom: 10px;
+        }
+
+        .service-box p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            background: #002244;
+            color: #fff;
+            margin-top: 60px;
+        }
+
+        .footer-top {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 40px 40px 20px;
+            justify-content: space-between;
+        }
+
+        .footer-col {
+            flex: 1 1 220px;
+            min-width: 220px;
+        }
+
+        .footer h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #ffcc00;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #ffcc00;
+        }
+
+        .footer-col p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col ul li a {
+            text-decoration: none;
+            color: #ddd;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: #ffcc00;
+        }
+
+        /* Newsletter form */
+        .footer-form {
+            display: flex;
+            flex-wrap: nowrap;
+            margin-top: 8px;
+        }
+
+        .footer-form input {
+            padding: 8px;
+            border: none;
+            outline: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 13px;
+            flex: 1;
+        }
+
+        .footer-form button {
+            padding: 8px 12px;
+            border: none;
+            background: #ffcc00;
+            color: #002244;
+            font-weight: 600;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .footer-form button:hover {
+            opacity: 0.9;
+        }
+
+        /* Social links */
+        .footer-social {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1px solid #ffcc00;
+            font-size: 12px;
+            text-decoration: none;
+            color: #ffcc00;
+            transition: 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: #ffcc00;
+            color: #002244;
+        }
+
+        /* Bottom bar */
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            text-align: center;
+            padding: 12px 10px 16px;
+            font-size: 13px;
+            color: #bbb;
+        }
+
+
+
+
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+
+            .search-box {
+                display: none;
+            }
+
+            .navbar {
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 30px;
+            }
+
+            .banner p {
+                font-size: 16px;
+            }
+
+            .banner-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .service-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-top {
+                padding: 30px 20px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <header class="navbar">
+        <div class="logo">
+
+            <h2>EventEase</h2>
+        </div>
+
+        <nav class="nav-links">
+            <a href="/">Home</a>
+            <a href="/events">Events</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+        </nav>
+
+        <div class="nav-right">
+            <input type="text" placeholder="Search events..." class="search-box">
+            <button class="btn login">Login</button>
+            <button class="btn signup">Sign Up</button>
+        </div>
+    </header>
+
+
+    <!-- Banner Section Start -->
+    <section class="banner">
+        <div class="banner-content">
+            <h1>Plan, Book & Manage Events Easily 🎉</h1>
+            <p>Welcome to <span>EventEase</span> – your one-stop solution for all event bookings and management.</p>
+            <div class="banner-buttons">
+                <a href="/events"><button class="btn explore">Explore Events</button></a>
+                <a href="/contact"> <button class="btn contact">Contact Us</button></a>
+            </div>
+        </div>
+    </section>
+    <!-- Banner Section End -->
+
+    <!-- Services Section Start -->
+    <section class="services">
+        <h2 class="section-title">What We Offer</h2>
+        <p class="section-subtitle">Manage every event easily with our smart features</p>
+
+        <div class="service-container">
+            <div class="service-box">
+                <img src="https://media.istockphoto.com/id/1340256499/photo/shot-of-an-unrecognisable-woman-decorating-a-table-in-preparation-for-a-wedding-reception.jpg?s=612x612&w=0&k=20&c=TaRugK36QTnwsDCgHobO9fE4OzOoWP-cHMXR2Exprnc="
+                    alt="Event Planning">
+                <h3>Event Planning</h3>
+                <p>Plan and organize your events with ease using our built-in tools and templates.</p>
+            </div>
+
+            <div class="service-box">
+                <img src="https://c8.alamy.com/comp/R4KGFP/air-ticket-flight-booking-concept-R4KGFP.jpg"
+                    alt="Ticket Booking">
+                <h3>Online Booking</h3>
+                <p>Book your tickets instantly and get digital confirmation — fast and secure.</p>
+            </div>
+
+            <div class="service-box">
+                <img src="https://colorlib.com/wp/wp-content/uploads/sites/2/adminty-free-admin-dashboard-template.jpg"
+                    alt="Admin Dashboard">
+                <h3>Admin Dashboard</h3>
+                <p>Admins can easily add, update or remove events from a powerful control panel.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section End -->
+
+    <!-- Footer Start -->
+    <footer class="footer">
+        <div class="footer-top">
+
+            <div class="footer-col">
+                <h3>EventEase</h3>
+                <p>
+                    EventEase is an online platform to plan, book and manage events
+                    like concerts, weddings, conferences and more.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Browse Events</a></li>
+                    <li><a href="#">My Bookings</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>Email: support@eventease.com</p>
+                <p>Phone: +91 98765 43210</p>
+                <p>Location: Ahmedabad, India</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Stay Updated</h4>
+                <p>Subscribe to get updates about new events.</p>
+                <form class="footer-form">
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit">Subscribe</button>
+                </form>
+                <div class="footer-social">
+                    <a href="#">FB</a>
+                    <a href="#">IG</a>
+                    <a href="#">X</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 EventEase. All rights reserved.</p>
+        </div>
+    </footer>
+    <!-- Footer End -->
+
+
+
+
+</body>
+
+</html>

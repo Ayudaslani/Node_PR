@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EventEase | Online Event Management System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+
+        .navbar {
+            width: 100%;
+            height: 70px;
+            background: linear-gradient(90deg, #004aad, #0078ff);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+
+        .logo h2 {
+            font-size: 22px;
+            letter-spacing: 1px;
+        }
+
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffcc00;
+            text-decoration: underline;
+        }
+
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .search-box {
+            padding: 6px 10px;
+            border-radius: 4px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            width: 160px;
+        }
+
+        .btn {
+            border: none;
+            padding: 8px 14px;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn.login {
+            background-color: white;
+            color: #004aad;
+        }
+
+        .btn.signup {
+            background-color: #ffcc00;
+            color: #003366;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact-section {
+            padding: 80px 40px;
+            background-color: #f8f9ff;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .contact-header h1 {
+            font-size: 36px;
+            color: #003366;
+        }
+
+        .contact-header h1 span {
+            color: #ffcc00;
+        }
+
+        .contact-header p {
+            color: #555;
+            font-size: 15px;
+            margin-top: 10px;
+        }
+
+        /* Contact container layout */
+        .contact-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            flex: 1 1 500px;
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form h2 {
+            color: #004aad;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: #003366;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #004aad;
+            box-shadow: 0 0 4px rgba(0, 74, 173, 0.3);
+        }
+
+        .send-btn {
+            background-color: #004aad;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .send-btn:hover {
+            background-color: #003366;
+            transform: scale(1.05);
+        }
+
+        /* ===== EVENTS SECTION ===== */
+        .events-section {
+            padding: 80px 40px;
+            background-color: #f8f9ff;
+        }
+
+        .events-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .events-header h1 {
+            font-size: 36px;
+            color: #003366;
+            margin-bottom: 10px;
+        }
+
+        .events-header h1 span {
+            color: #ffcc00;
+        }
+
+        .events-header p {
+            font-size: 15px;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Events Grid */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            justify-content: center;
+        }
+
+        /* Event Card */
+        .event-card {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .event-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+        }
+
+        .event-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .event-info {
+            padding: 20px;
+            text-align: left;
+        }
+
+        .event-info h3 {
+            color: #004aad;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .event-info p {
+            font-size: 14px;
+            color: #555;
+            margin: 4px 0;
+        }
+
+        .event-date,
+        .event-location {
+            font-weight: 500;
+            color: #003366;
+        }
+
+        .event-desc {
+            margin-top: 8px;
+            color: #666;
+        }
+
+        /* Book Now Button */
+        .book-btn {
+            background: #004aad;
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: 14px;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .book-btn:hover {
+            background: #003366;
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .events-section {
+                padding: 60px 20px;
+            }
+
+            .event-info h3 {
+                font-size: 18px;
+            }
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .contact-container {
+                flex-direction: column;
+            }
+
+            .contact-form,
+            .contact-info {
+                width: 100%;
+            }
+        }
+
+
+        .footer {
+            background: #002244;
+            color: #fff;
+            margin-top: 60px;
+        }
+
+        .footer-top {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 40px 40px 20px;
+            justify-content: space-between;
+        }
+
+        .footer-col {
+            flex: 1 1 220px;
+            min-width: 220px;
+        }
+
+        .footer h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #ffcc00;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #ffcc00;
+        }
+
+        .footer-col p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col ul li a {
+            text-decoration: none;
+            color: #ddd;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: #ffcc00;
+        }
+
+        /* Newsletter form */
+        .footer-form {
+            display: flex;
+            flex-wrap: nowrap;
+            margin-top: 8px;
+        }
+
+        .footer-form input {
+            padding: 8px;
+            border: none;
+            outline: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 13px;
+            flex: 1;
+        }
+
+        .footer-form button {
+            padding: 8px 12px;
+            border: none;
+            background: #ffcc00;
+            color: #002244;
+            font-weight: 600;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .footer-form button:hover {
+            opacity: 0.9;
+        }
+
+        /* Social links */
+        .footer-social {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1px solid #ffcc00;
+            font-size: 12px;
+            text-decoration: none;
+            color: #ffcc00;
+            transition: 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: #ffcc00;
+            color: #002244;
+        }
+
+        /* Bottom bar */
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            text-align: center;
+            padding: 12px 10px 16px;
+            font-size: 13px;
+            color: #bbb;
+        }
+
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+
+            .search-box {
+                display: none;
+            }
+
+            .navbar {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <header class="navbar">
+        <div class="logo">
+
+            <h2>EventEase</h2>
+        </div>
+
+        <nav class="nav-links">
+            <a href="/">Home</a>
+            <a href="/events">Events</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+        </nav>
+
+        <div class="nav-right">
+            <input type="text" placeholder="Search events..." class="search-box">
+            <button class="btn login">Login</button>
+            <button class="btn signup">Sign Up</button>
+        </div>
+    </header>
+
+
+    <!-- ===== EVENTS SECTION START ===== -->
+    <section class="events-section">
+        <div class="events-header">
+            <h1>Upcoming <span>Events</span></h1>
+            <p>Explore the latest events happening around you and book your tickets instantly.</p>
+        </div>
+
+        <div class="events-grid">
+            <!-- Event Card 1 -->
+            <div class="event-card">
+                <img src="https://t3.ftcdn.net/jpg/01/42/51/58/360_F_142515887_xVLCVpdyWDU5ScHTi64iMCEZJioVHqU4.jpg"
+                    alt="Concert Event">
+                <div class="event-info">
+                    <h3>Music Concert 2025</h3>
+                    <p class="event-date">📅 Date: 15 Dec 2025</p>
+                    <p class="event-location">📍 Location: Mumbai</p>
+                    <p class="event-desc">Experience an electrifying live concert featuring top artists from across the
+                        country.</p>
+                    <button class="btn book-btn">Book Now</button>
+                </div>
+            </div>
+
+            <!-- Event Card 2 -->
+            <div class="event-card">
+                <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F852198579%2F272798929277%2F1%2Foriginal.20240917-120033?crop=focalpoint&fit=crop&w=1000&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=637440e5bc50d1e6279bf8727c0d3ee9"
+                    alt="Tech Summit">
+                <div class="event-info">
+                    <h3>Tech Summit India</h3>
+                    <p class="event-date">📅 Date: 20 Jan 2026</p>
+                    <p class="event-location">📍 Location: Bangalore</p>
+                    <p class="event-desc">Join developers and innovators at India’s biggest technology conference.</p>
+                    <button class="btn book-btn">Book Now</button>
+                </div>
+            </div>
+
+            <!-- Event Card 3 -->
+            <div class="event-card">
+                <img src="https://plataran.com/wp-content/uploads/2025/02/MFS03286-scaled.jpg" alt="Wedding Expo">
+                <div class="event-info">
+                    <h3>Grand Wedding Expo</h3>
+                    <p class="event-date">📅 Date: 5 Feb 2026</p>
+                    <p class="event-location">📍 Location: Jaipur</p>
+                    <p class="event-desc">Meet vendors, designers, and planners to make your dream wedding a reality.
+                    </p>
+                    <button class="btn book-btn">Book Now</button>
+                </div>
+            </div>
+
+            <!-- Event Card 4 -->
+            <div class="event-card">
+                <img src="https://startup.icai.org/wp-content/uploads/slider/cache/7ce76bfebba537394063c79ed3bfaf6d/8.png"
+                    alt="Startup Meet">
+                <div class="event-info">
+                    <h3>Startup Connect Meet</h3>
+                    <p class="event-date">📅 Date: 18 Mar 2026</p>
+                    <p class="event-location">📍 Location: Delhi</p>
+                    <p class="event-desc">A networking platform for startup founders, investors, and tech enthusiasts.
+                    </p>
+                    <button class="btn book-btn">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ===== EVENTS SECTION END ===== -->
+
+
+
+    <footer class="footer">
+        <div class="footer-top">
+
+            <div class="footer-col">
+                <h3>EventEase</h3>
+                <p>
+                    EventEase is an online platform to plan, book and manage events
+                    like concerts, weddings, conferences and more.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Browse Events</a></li>
+                    <li><a href="#">My Bookings</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>Email: support@eventease.com</p>
+                <p>Phone: +91 98765 43210</p>
+                <p>Location: Ahmedabad, India</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Stay Updated</h4>
+                <p>Subscribe to get updates about new events.</p>
+                <form class="footer-form">
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit">Subscribe</button>
+                </form>
+                <div class="footer-social">
+                    <a href="#">FB</a>
+                    <a href="#">IG</a>
+                    <a href="#">X</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 EventEase. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
