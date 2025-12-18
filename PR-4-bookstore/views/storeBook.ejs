@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>About Us | Redes Book Store</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container header-flex">
+            <div class="logo">📘 Redes</div>
+
+            <nav class="nav">
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="/storebook">Store</a>
+                <a href="/contact">Contact Us</a>
+            </nav>
+
+            <a href="/add-book-page"><button class="add-btn">Add Book</button></a>
+        </div>
+    </header>
+    <section class="store-section">
+        <div class="container">
+
+            <!-- Store Heading -->
+            <div class="store-header">
+                <h2>Our Book Store</h2>
+                <p>Explore our collection of books</p>
+            </div>
+
+            <!-- Filter Section (UI only) -->
+            <div class="store-filter">
+                <select>
+                    <option>All Categories</option>
+                    <option>Novel</option>
+                    <option>Educational</option>
+                    <option>Comic</option>
+                    <option>Biography</option>
+                </select>
+
+                <input type="text" placeholder="Search book by title or author">
+            </div>
+
+            <div class="store-grid">
+
+                <% if (Books && Books.length> 0) { %>
+                    <% Books.forEach(book=> { %>
+
+                        <div class="store-card">
+                            <div class="store-img">
+                                <img src="<%= book.image || 'https://via.placeholder.com/200x260' %>" alt="Book">
+                            </div>
+
+                            <div class="store-content">
+                                <h3>
+                                    <%= book.title %>
+                                </h3>
+                                <p class="author">By <%= book.authorname %>
+                                </p>
+
+                                <span class="badge">
+                                    <%= book.category %>
+                                </span>
+                            </div>
+                        </div>
+
+                        <% }) %>
+                            <% } else { %>
+                                <p>No books found</p>
+                                <% } %>
+
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-row">
+
+
+                <div class="footer-col">
+                    <h2 class="footer-logo">📘 Redes</h2>
+                    <p>
+                        Your one-stop destination for novels, educational books,
+                        comics and biographies. Read. Learn. Grow.
+                    </p>
+                </div>
+
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/storebook">Store</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="footer-col">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li>Novels</li>
+                        <li>Educational</li>
+                        <li>Comics</li>
+                        <li>Biography</li>
+                    </ul>
+                </div>
+
+
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@redesbooks.com</p>
+                    <p>Phone: +91 98765 43210</p>
+                    <p>Location: India</p>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 Redes Book Store. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+</body>
+
+</html>
