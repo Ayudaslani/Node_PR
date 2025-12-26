@@ -1,0 +1,68 @@
+<%- include('header')%>
+
+  <section class="moive-form-section">
+    <div class="movie-form-container">
+        <h2>Edit Movie 🎬</h2>
+
+        <form class="movie-form" action="/update-moive-data/<%= Moive.id %>" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label>Movie Title</label>
+                <input type="text" placeholder="Enter movie title" name="title" value="<%= Moive.title %>" />
+            </div>
+
+            <div class="form-group">
+                <label>Genre</label>
+                <select name="genre">
+                    <option>-- Select Genre --</option>
+                    <option value="action" <%=Moive.genre==='action' ? 'selected' : '' %>>Action</option>
+                    <option value="Comedy" <%=Moive.genre==='Comedy' ? 'selected' : '' %>>Comedy</option>
+                    <option value="drama" <%=Moive.genre==='drama' ? 'selected' : '' %>>Drama</option>
+                    <option value="romance" <%=Moive.genre==='romance' ? 'selected' : '' %>>Romance</option>
+                    <option value="horror" <%=Moive.genre==='horror' ? 'selected' : '' %>>Horror</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Release Year</label>
+                    <input type="number" placeholder="2025" name="releaseyear" value="<%= Moive.releaseyear %>" />
+                </div>
+
+                <div class="form-group">
+                    <label>Duration (min)</label>
+                    <input type="number" placeholder="120" name="duration" value="<%= Moive.duration %>" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Rating</label>
+                <select name="rating">
+                    <option>-- Select Rating --</option>
+                    <option value="1" <%=Moive.rating==='1' ? 'selected' : '' %>>⭐ 1</option>
+                    <option value="2" <%=Moive.rating==='2' ? 'selected' : '' %> >⭐ 2</option>
+                    <option value="3" <%=Moive.rating==='3' ? 'selected' : '' %> >⭐ 3</option>
+                    <option value="4" <%=Moive.rating==='4' ? 'selected' : '' %>>⭐ 4</option>
+                    <option value="5" <%=Moive.rating==='5' ? 'selected' : '' %>>⭐ 5</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Movie Poster</label>
+                <input type="file" name="posterImage" />
+                <div style="text-align: center;display: flex;justify-content: center; padding: 10px;">
+                    <img src="<%= Moive.posterImage %>" width="150">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <input type="text" placeholder="Enter movie description..." name="description"
+                    value="<%= Moive.description %>"></input>
+            </div>
+
+            <button type="submit">Edit Movie</button>
+        </form>
+    </div>
+
+    </section>
+  <%- include('footer')%>

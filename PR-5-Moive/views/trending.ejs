@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trending | MovieFlix</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+<!-- ===== HEADER (SAME – NO CHANGE) ===== -->
+<header class="header">
+  <div class="logo">🎬 MovieFlix</div>
+
+  <nav class="nav">
+    <a href="/">Home</a>
+    <a href="/moivepage">Movies</a>
+    <a href="/tvshow">TV Shows</a>
+    <a href="/trending" class="active">Trending</a>
+  </nav>
+
+  <div class="header-right">
+    <input type="text" placeholder="Search trending..." />
+    <a href="/addmoivepage"><button>Add Movie</button></a>
+  </div>
+</header>
+
+<!-- ===== TRENDING TITLE ===== -->
+<section class="trend-title">
+  <h1>🔥 Trending Now</h1>
+  <p>Most watched this week on MovieFlix</p>
+</section>
+
+<!-- ===== TRENDING LIST ===== -->
+<section class="trend-list">
+
+  <div class="trend-item">
+    <span class="rank">01</span>
+    <div class="trend-info">
+      <h3>Oppenheimer</h3>
+      <p>Movie • Drama • ⭐ 8.9</p>
+    </div>
+    <button class="trend-btn">Watch</button>
+  </div>
+
+  <div class="trend-item">
+    <span class="rank">02</span>
+    <div class="trend-info">
+      <h3>Stranger Things</h3>
+      <p>TV Show • Sci-Fi • ⭐ 8.7</p>
+    </div>
+    <button class="trend-btn">Watch</button>
+  </div>
+
+  <div class="trend-item">
+    <span class="rank">03</span>
+    <div class="trend-info">
+      <h3>John Wick 4</h3>
+      <p>Movie • Action • ⭐ 8.2</p>
+    </div>
+    <button class="trend-btn">Watch</button>
+  </div>
+
+</section>
+
+<!-- ===== TREND TAGS ===== -->
+<section class="trend-tags">
+  <span>#Action</span>
+  <span>#Drama</span>
+  <span>#SciFi</span>
+  <span>#Thriller</span>
+  <span>#Comedy</span>
+</section>
+
+<!-- ===== TRENDING MOVIE CARDS ===== -->
+<section class="trending-movie-cards">
+
+  <div class="trending-card">
+    <span class="movie-tag action">Action</span>
+    <img src="https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg" alt="Avengers">
+    <h3>Avengers: Infinity War</h3>
+  </div>
+
+  <div class="trending-card">
+    <span class="movie-tag drama">Drama</span>
+    <img src="https://image.tmdb.org/t/p/w500/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg" alt="Wonder Woman">
+    <h3>Wonder Woman</h3>
+  </div>
+
+  <div class="trending-card">
+    <span class="movie-tag scifi">Sci-Fi</span>
+    <img src="https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" alt="Interstellar">
+    <h3>Interstellar</h3>
+  </div>
+
+  <div class="trending-card">
+    <span class="movie-tag thriller">Thriller</span>
+    <img src="https://image.tmdb.org/t/p/w500/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg" alt="Joker">
+    <h3>Joker</h3>
+  </div>
+
+</section>
+
+<%- include('footer')%>

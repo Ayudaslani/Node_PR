@@ -1,0 +1,64 @@
+<%- include('header')%>
+
+  <section class="moive-form-section">
+    <div class="movie-form-container">
+      <h2>Add New Movie 🎬</h2>
+
+      <form class="movie-form" action="/add-moive-data" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <label>Movie Title</label>
+          <input type="text" placeholder="Enter movie title" name="title" required />
+        </div>
+
+        <div class="form-group">
+          <label>Genre</label>
+          <select name="genre" required>
+            <option>-- Select Genre --</option>
+            <option value="action">Action</option>
+            <option value="Comedy">Comedy</option>
+            <option value="drama">Drama</option>
+            <option value="romance">Romance</option>
+            <option value="horror">Horror</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Release Year</label>
+            <input type="number" placeholder="2025" name="releaseyear" required />
+          </div>
+
+          <div class="form-group">
+            <label>Duration (min)</label>
+            <input type="number" placeholder="120" name="duration" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Rating</label>
+          <select name="rating" required>
+            <option>-- Select Rating --</option>
+            <option value="1">⭐ 1</option>
+            <option value="2">⭐ 2</option>
+            <option value="3">⭐ 3</option>
+            <option value="4">⭐ 4</option>
+            <option value="5">⭐ 5</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Movie Poster</label>
+          <input type="file" name="posterImage" required />
+        </div>
+
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" placeholder="Enter movie description..." name="description" required></input>
+        </div>
+
+        <button type="submit">Add Movie</button>
+      </form>
+    </div>
+  </section>
+
+  <%- include('footer')%>
