@@ -96,6 +96,7 @@ exports.forgotPasswordPage = async (req, res) => {
     }
 }
 
+
 exports.sendotp = async (req, res) => {
     try {
         let admin = await Admin.findOne({ email: req.body.email });
@@ -180,5 +181,50 @@ exports.updatePassword = async (req, res) => {
     } catch (error) {
         console.log(error);
         return res.redirect('/');
+    }
+}
+
+exports.myprofile = async(req,res)=>{
+    try{
+        return res.render('myprofile')
+
+    }catch(error){
+         console.log(error);
+        return res.redirect('/');
+    }
+}
+exports.changePasswordPage = async (req, res) => {
+    try {
+        return res.render('changepassword')
+
+    } catch (error) {
+        console.log(error);
+        return res.redirect('/');
+    }
+}
+exports.changePassword = async (req, res) => {
+    try {
+        let { newpass, oldpass, cpassword } = req.body;
+        let user = req.user;
+        let matchpass = await bcrypt.compare(oldpass, user.password)
+
+        if (!matchpass) {
+            console.log('old password not match ');
+            return res.redirect('/change-password');
+        }
+
+        if (newpass == cpassword) {
+            let hashpassword = await bcrypt.hash(newpass, 10);
+            await Admin.findByIdAndUpdate(user._id, {
+                password: hashpassword
+            }, { new: true })
+            return res.redirect('/dashboard')
+        } else {
+            console.log('new & confirm password not match ');
+            return res.redirect('/change-password');
+        }
+    } catch (error) {
+        console.log(error);
+        return res.redirect('/dashboard')
     }
 }
