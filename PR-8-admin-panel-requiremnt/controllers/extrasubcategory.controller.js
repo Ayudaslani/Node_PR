@@ -32,7 +32,7 @@ exports.addextrasubcategory = async (req, res) => {
         const extrasubcategory = await ExtraSubCategory.create(req.body)
         req.flash('success', 'Add successfully !')
 
-        return res.redirect('extrasubcategory/view-extrasubcategory')
+        return res.redirect('/extrasubcategory/view-extrasubcategory')
 
     } catch (error) {
         console.log(error);
